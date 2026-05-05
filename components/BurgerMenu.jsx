@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function BurgerMenu() {
 	const [active, setActive] = useState(false)
@@ -10,11 +9,27 @@ export default function BurgerMenu() {
 		setActive(prev => !prev)
 	}
 
+	// Блокируем скролл при открытом меню
+	useEffect(() => {
+		if (active) {
+			document.body.classList.add('no-scroll')
+			document.documentElement.classList.add('no-scroll')
+		} else {
+			document.body.classList.remove('no-scroll')
+			document.documentElement.classList.remove('no-scroll')
+		}
+
+		return () => {
+			document.body.classList.remove('no-scroll')
+			document.documentElement.classList.remove('no-scroll')
+		}
+	}, [active])
+
 	return (
 		<>
 			<div
-				className='burger-menu__background'
-				style={{ display: active ? 'block' : 'none' }}
+				className={`burger-menu__background ${active ? 'active' : ''}`}
+				onClick={handleActive}
 			></div>
 			<div className='burger-menu__wrapper'>
 				<div className='burger-menu' onClick={handleActive}>
@@ -25,29 +40,40 @@ export default function BurgerMenu() {
 					</div>
 				</div>
 				<div
-					className='burger-menu__content-banner'
-					style={{ right: active ? '0' : '-400px' }}
+					className={`burger-menu__content-banner ${active ? 'active' : ''}`}
 				>
 					<span className='cross' onClick={handleActive}>
 						&times;
 					</span>
-          <div className="burger-menu__header">
-
-          <h2>Лес чудес</h2>
-					<Image src='/image/logo-green.svg' width={22} height={22} alt='Logo' />
-          </div>
+					<div className='burger-menu__header'>
+						<h2>Лес чудес</h2>
+						<Image
+							src='/image/logo-green.svg'
+							width={22}
+							height={22}
+							alt='Logo'
+						/>
+					</div>
 					<ul className='burger-menu__list'>
 						<li className='burger-menu__item'>
-							<a href='#services'>Услуги</a>
+							<a href='#services' onClick={handleActive}>
+								Услуги
+							</a>
 						</li>
 						<li className='burger-menu__item'>
-							<a href='#analytics'>Аналитика</a>
+							<a href='#analytics' onClick={handleActive}>
+								Аналитика
+							</a>
 						</li>
 						<li className='burger-menu__item'>
-							<a href='#requests'>Запросы</a>
+							<a href='#requests' onClick={handleActive}>
+								Запросы
+							</a>
 						</li>
 						<li className='burger-menu__item'>
-							<a href='#feedback'>Спецпредложение</a>
+							<a href='#feedback' onClick={handleActive}>
+								Спецпредложение
+							</a>
 						</li>
 					</ul>
 				</div>
