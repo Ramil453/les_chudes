@@ -1,5 +1,7 @@
 import React from 'react'
 import Card from '../components/Card'
+import { motion } from 'framer-motion'
+
 
 export default function Programs({ timeOfYear, color }) {
   const programs = [
@@ -62,17 +64,27 @@ export default function Programs({ timeOfYear, color }) {
 		<div className='container'>
 			<section className='programs-section' id='services'>
 				<div className='programs-section__text'>
-					<h3 className='section-title'>
+					<motion.h3
+						className='section-title'
+						initial={{ opacity: 0, x: -20 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.5, delay: 0.1 }}
+					>
 						Программы
-					</h3>
-					<p className='section-description'>
+					</motion.h3>
+					<motion.p
+						className='section-description'
+						initial={{ opacity: 0, x: 20 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.5, delay: 0.1 }}
+					>
 						Экскурсии, квесты на открытом воздухе, семейный отдых, свадьбы, дни
 						рождения, выпускные
-					</p>
+					</motion.p>
 				</div>
 				<div className='program-cards'>
 					{programs.map(programs => (
-						<Card key={programs.id} programs={programs} color={color}/>
+						<Card key={programs.id} programs={programs} color={color} />
 					))}
 				</div>
 			</section>

@@ -1,12 +1,13 @@
 'use client'
 import { useState, useEffect } from "react"
+import { motion } from 'framer-motion'
 
 export default function MainBanner({ color, timeOfYear }) {
 	const [imageUrl, setImageUrl] = useState('/image/bg-summer.svg')
 
 	useEffect(() => {
 		setImageUrl(`/image/bg-${timeOfYear}.svg`)
-	}, [timeOfYear]) // когда timeOfYear меняется, обновляем imageUrl
+	}, [timeOfYear])
 
 	return (
 		<div
@@ -14,7 +15,12 @@ export default function MainBanner({ color, timeOfYear }) {
 			style={{ backgroundImage: `url(${imageUrl})` }}
 		>
 			<div className='container'>
-				<h2 className='main-banner__title'>
+				<motion.h2
+					className='main-banner__title'
+					initial={{ opacity: 0, y: -10 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0 }}
+				>
 					{timeOfYear === 'autumn' && (
 						<>
 							<span style={{ color: color }}>Осенний </span>
@@ -39,17 +45,26 @@ export default function MainBanner({ color, timeOfYear }) {
 							сказка
 						</>
 					)}
-				</h2>
-				<p className='main-banner__description'>
+				</motion.h2>
+				<motion.p
+					className='main-banner__description'
+					initial={{ opacity: 0, y: -10 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.1 }}
+				>
 					Квесты на открытом воздухе, семейный отдых, свадьбы и выпускные под
 					солнцем Татарстана
-				</p>
-				<a href="#services">
-
-				<button className='green--btn' style={{ background: color }}>
-					Выбрать программу
-				</button>
-				</a>
+				</motion.p>
+				<motion.a
+					href='#services'
+					initial={{ opacity: 0, y: -10 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.2 }}
+				>
+					<button className='green--btn' style={{ background: color }}>
+						Выбрать программу
+					</button>
+				</motion.a>
 			</div>
 		</div>
 	)

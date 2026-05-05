@@ -8,6 +8,8 @@ import Analytics from '../components/Analytics'
 import Table from '../components/Table'
 import Feedback from '../components/Feedback'
 import Footer from '../components/Footer'
+import { motion } from 'framer-motion'
+
 
 export default function Home() {
 type Season = 'summer' | 'autumn' | 'spring' | 'winter'
@@ -37,13 +39,24 @@ const handleTime = (t: Season) => {
 			<Header color={color} />
 			<div className='container'>
 				<div className='subheader'>
-					<p className='season-name' style={{ border: `2px solid ${color}` }}>
+					<motion.p
+						className='season-name'
+						style={{ border: `2px solid ${color}` }}
+						initial={{ opacity: 0, x: -50 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.5, delay: 0 }}
+					>
 						{timeOfYear === 'summer' && 'Летний сезон 2026'}
 						{timeOfYear === 'autumn' && 'Золотая осень 2026'}
 						{timeOfYear === 'spring' && 'Весеннее пробуждение 2026'}
 						{timeOfYear === 'winter' && 'Новогодний сезон 2026'}
-					</p>
-					<div className='season-icons'>
+					</motion.p>
+					<motion.div
+						className='season-icons'
+						initial={{ opacity: 0, x: 50 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.5, delay: 0 }}
+					>
 						<Image
 							src='/image/autumn.svg'
 							alt='autumn icon'
@@ -72,7 +85,7 @@ const handleTime = (t: Season) => {
 							height={45}
 							onClick={() => handleTime('winter')}
 						/>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 			<MainBanner color={color} timeOfYear={timeOfYear} />

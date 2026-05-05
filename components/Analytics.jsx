@@ -1,4 +1,6 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+
 
 export default function Analytics({ timeOfYear, color }) {
 	return (
@@ -18,17 +20,62 @@ export default function Analytics({ timeOfYear, color }) {
 		>
 			<div className='container'>
 				<div className='analytics-card'>
-					<h3>Заключение о состоянии сайта и потребностях ЦА</h3>
-					<p>
+					<motion.h3
+						initial={{ opacity: 0, x: 0 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.5, delay: 0.1 }}
+					>
+						Заключение о состоянии сайта и потребностях ЦА
+					</motion.h3>
+					<motion.p
+						initial={{ opacity: 0, x: 0 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+					>
 						На основе анализа Google Trends, Яндекс.Вордстат и соцсетей выявлены
 						ключевые потребности целевых групп по сезонам.
-					</p>
+					</motion.p>
 					<div className='analytics-tags'>
-						<p style={{ background: color }}>Зимний отдых с детьми</p>
-						<p style={{ background: color }}>Резиденция Кыш Бабая</p>
-						<p style={{ background: color }}>Зимние свадьбы</p>
-						<p style={{ background: color }}>Дни рождения</p>
-						<p style={{ background: color }}>Новогодние программы</p>
+						<motion.p
+							style={{ background: color }}
+							initial={{ opacity: 0, y: 5 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: 0.3 }}
+						>
+							Зимний отдых с детьми
+						</motion.p>
+						<motion.p
+							style={{ background: color }}
+							initial={{ opacity: 0, y: 5 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: 0.4 }}
+						>
+							Резиденция Кыш Бабая
+						</motion.p>
+						<motion.p
+							style={{ background: color }}
+							initial={{ opacity: 0, y: 5 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: 0.5 }}
+						>
+							Зимние свадьбы
+						</motion.p>
+						<motion.p
+							style={{ background: color }}
+							initial={{ opacity: 0, y: 5 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: 0.6 }}
+						>
+							Дни рождения
+						</motion.p>
+						<motion.p
+							style={{ background: color }}
+							initial={{ opacity: 0, y: 5 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: 0.7  }}
+						>
+							Новогодние программы
+						</motion.p>
 					</div>
 				</div>
 				<div className='principle'>
