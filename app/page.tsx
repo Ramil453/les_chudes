@@ -10,20 +10,23 @@ import Feedback from '../components/Feedback'
 import Footer from '../components/Footer'
 
 export default function Home() {
-	const [timeOfYear, setTimeOfYear] = useState('summer')
-	const [color, setColor] = useState('')
+type Season = 'summer' | 'autumn' | 'spring' | 'winter'
 
-	const seasonColors = {
-		summer: '#2C6E2F',
-		autumn: '#B7410E',
-		spring: '#FFAABB',
-		winter: '#1b3b6f',
-	}
+const [timeOfYear, setTimeOfYear] = useState<Season>('summer')
+const [color, setColor] = useState('')
 
-	const handleTime = (t: string) => {
-		setTimeOfYear(t)
-		setColor(seasonColors[t])
-	}
+const seasonColors: Record<Season, string> = {
+	summer: '#2C6E2F',
+	autumn: '#B7410E',
+	spring: '#FFAABB',
+	winter: '#1b3b6f',
+}
+
+const handleTime = (t: Season) => {
+	// ← тип Season вместо string
+	setTimeOfYear(t)
+	setColor(seasonColors[t]) // ✅ Работает
+}
 	useEffect(() => {
 		console.log(timeOfYear)
 		console.log(color)
