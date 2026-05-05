@@ -87,7 +87,7 @@ header > .container {
 
 /* Медиа-запрос для мобильных устройств */
 
-.burger-menu__wrapper  {
+.burger-menu__wrapper, .burger-menu__background  {
 	display: none;
 }
 
