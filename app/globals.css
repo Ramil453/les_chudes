@@ -495,7 +495,7 @@ header > .container {
 .table {
 	margin-top: 25px;
 	margin-bottom: 60px;
-	min-width: 1400px;
+	min-width: 1450px;
 }
 
 .table {
@@ -511,6 +511,10 @@ header > .container {
 	border-radius: 10px;
 	padding: 27px 33px;
 	font-weight: bold;
+}
+
+.table-row > p {
+	font-size: 16px;
 }
 
 .table-header > p:nth-child(1),
