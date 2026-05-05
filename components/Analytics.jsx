@@ -1,7 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-
 export default function Analytics({ timeOfYear, color }) {
 	return (
 		<section
@@ -72,37 +71,81 @@ export default function Analytics({ timeOfYear, color }) {
 							style={{ background: color }}
 							initial={{ opacity: 0, y: 5 }}
 							whileInView={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.5, delay: 0.7  }}
+							transition={{ duration: 0.5, delay: 0.7 }}
 						>
 							Новогодние программы
 						</motion.p>
 					</div>
 				</div>
 				<div className='principle'>
-					<h2 className='principle-title'>
+					<motion.h2
+						className='principle-title'
+						initial={{ opacity: 0, y: 0 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.1 }}
+					>
 						Принцип <br /> трех <br /> кликов
-					</h2>
+					</motion.h2>
 					<div className='principle-steps'>
 						<p className='principle-step-number' style={{ background: color }}>
-							1
+							<motion.span
+								initial={{ opacity: 0, x: 0 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								transition={{ duration: 0.5, delay: 0.1 }}
+							>
+								1
+							</motion.span>
 						</p>
 						<span
 							className='principle-line'
 							style={{ background: color }}
 						></span>
 						<p className='principle-step-number' style={{ background: color }}>
-							2
+							<motion.span
+								initial={{ opacity: 0, x: 0 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								transition={{ duration: 0.5, delay: 0.1 }}
+							>
+								2
+							</motion.span>
 						</p>
 						<span
 							className='principle-line'
 							style={{ background: color }}
 						></span>
 						<p className='principle-step-number' style={{ background: color }}>
-							3
+							<motion.span
+								initial={{ opacity: 0, x: 0 }}
+								whileInView={{ opacity: 1, x: 0 }}
+								transition={{ duration: 0.5, delay: 0.1 }}
+							>
+								3
+							</motion.span>
 						</p>
-						<p className='principle-step__title'>Главная</p>
-						<p className='principle-step__title'>Выбор услуги</p>
-						<p className='principle-step__title'>Бронирование</p>
+						<motion.p
+							className='principle-step__title'
+							initial={{ opacity: 0, x: 15 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.5, delay: 0.1 }}
+						>
+							Главная
+						</motion.p>
+						<motion.p
+							className='principle-step__title'
+							initial={{ opacity: 0, x: -15 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.5, delay: 0.1 }}
+						>
+							Выбор услуги
+						</motion.p>
+						<motion.p
+							className='principle-step__title'
+							initial={{ opacity: 0, x: 15 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.5, delay: 0.1 }}
+						>
+							Бронирование
+						</motion.p>
 					</div>
 				</div>
 			</div>
