@@ -1,65 +1,83 @@
-import Image from "next/image";
+'use client'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import Header from '../components/Header'
+import MainBanner from '../components/MainBanner'
+import Programs from '../components/Programs'
+import Analytics from '../components/Analytics'
+import Table from '../components/Table'
+import Feedback from '../components/Feedback'
+import Footer from '../components/Footer'
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+	const [timeOfYear, setTimeOfYear] = useState('summer')
+	const [color, setColor] = useState('')
+
+	const seasonColors = {
+		summer: '#2C6E2F',
+		autumn: '#B7410E',
+		spring: '#FFAABB',
+		winter: '#1b3b6f',
+	}
+
+	const handleTime = (t: string) => {
+		setTimeOfYear(t)
+		setColor(seasonColors[t])
+	}
+	useEffect(() => {
+		console.log(timeOfYear)
+		console.log(color)
+	}, [timeOfYear])
+
+	return (
+		<>
+			<Header color={color} />
+			<div className='container'>
+				<div className='subheader'>
+					<p className='season-name' style={{ border: `2px solid ${color}` }}>
+						{timeOfYear === 'summer' && 'Летний сезон 2026'}
+						{timeOfYear === 'autumn' && 'Золотая осень 2026'}
+						{timeOfYear === 'spring' && 'Весеннее пробуждение 2026'}
+						{timeOfYear === 'winter' && 'Новогодний сезон 2026'}
+					</p>
+					<div className='season-icons'>
+						<Image
+							src='/image/autumn.svg'
+							alt='autumn icon'
+							width={45}
+							height={45}
+							onClick={() => handleTime('autumn')}
+						/>
+						<Image
+							src='/image/summer.svg'
+							alt='summer icon'
+							width={45}
+							height={45}
+							onClick={() => handleTime('summer')}
+						/>
+						<Image
+							src='/image/spring.svg'
+							alt='spring icon'
+							width={45}
+							height={45}
+							onClick={() => handleTime('spring')}
+						/>
+						<Image
+							src='/image/winter.svg'
+							alt='winter icon'
+							width={45}
+							height={45}
+							onClick={() => handleTime('winter')}
+						/>
+					</div>
+				</div>
+			</div>
+			<MainBanner color={color} timeOfYear={timeOfYear} />
+			<Programs color={color} timeOfYear={timeOfYear} />
+			<Analytics color={color} timeOfYear={timeOfYear} />
+			<Table color={color} />
+			<Feedback color={color} timeOfYear={timeOfYear} />
+			<Footer />
+		</>
+	)
 }
